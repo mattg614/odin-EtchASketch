@@ -11,3 +11,25 @@
 
 
 
+const GRIDSIZE=4;
+
+function insertGridBlocks(GRIDSIZE) {
+    //Take in size of the grid, which is number of columns and rows
+    //That number squared becomes the total amount of blocks in the grid
+    
+    const numOfBlocks=GRIDSIZE**2;
+    const gridContainer=document.querySelector('.grid-container');
+    //Create a grid item for each block
+    for (let i=1; i<numOfBlocks+1; i++) {
+        //create a div of class name grid-item with textContent of i
+        let div=document.createElement('div');
+        div.classList.add('grid-item');
+        div.setAttribute('id', `grid-item${i}`)
+        div.textContent=i;
+        gridContainer.appendChild(div);
+
+        //append grid-item child to the grid-container parent
+    }
+}
+
+insertGridBlocks(GRIDSIZE);
