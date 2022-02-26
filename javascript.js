@@ -11,7 +11,7 @@
 
 
 
-const GRIDSIZE=16;
+// const GRIDSIZE=16;
 
 function insertGridBlocks(GRIDSIZE) {
     //Take in size of the grid, which is number of columns and rows
@@ -31,6 +31,7 @@ function insertGridBlocks(GRIDSIZE) {
         //append grid-item child to the grid-container parent
     }
     alignGrid(GRIDSIZE);
+    colorIn('red');
 }
 
 function alignGrid(GRIDSIZE) {
@@ -53,8 +54,13 @@ function resetPage() {
     const resetBtn=document.getElementById("#resetButton");
     resetBtn.addEventListener('click', ()=> {
        clearBlocks();
+    //    getNewGridSize();
     });
 }
+// function getNewGridSize() {
+//     let gridsize=prompt("Enter a new grid size");
+//     insertGridBlocks(parseInt(gridsize));
+// }
 //Accidentally made an eraser may add in later
 // function Eraser() {
 //     const gridBlocks=document.querySelectorAll('.grid-item');
@@ -71,9 +77,27 @@ function clearBlocks() {
     gridBlocks.forEach((block) => {
         block.style.backgroundColor="rgb(255, 235, 205, 0.8)";
         block.style.border='1px solid rgba(0, 0, 0, 0.8)';
+
     });
 }
+let GRIDSIZE=16;
+
+let GridRange=document.getElementById('gridSize');
+let changeSizeText=document.getElementsByClassName('changSizeText');
+
+GridRange.addEventListener("input", ()=> {
+    removeChildren();
+    insertGridBlocks(parseInt(GridRange.value));
+
+})
+function removeChildren() {
+    const gridContainer=document.querySelector('.grid-container')
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+}
 insertGridBlocks(GRIDSIZE);
-colorIn('red');
+
+
 resetPage();
 
