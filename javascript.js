@@ -49,6 +49,31 @@ function colorIn(color) {
         });
     });
 }
+function resetPage() {
+    const resetBtn=document.getElementById("#resetButton");
+    resetBtn.addEventListener('click', ()=> {
+       clearBlocks();
+    });
+}
+//Accidentally made an eraser may add in later
+// function Eraser() {
+//     const gridBlocks=document.querySelectorAll('.grid-item');
+//     gridBlocks.forEach((block) => {
+//         block.addEventListener("mouseenter", () => {
+//             block.style.backgroundColor="rgb(255, 235, 205, 0.8)";
+//             block.style.border='1px solid rgba(0, 0, 0, 0.8)';
+//         });
+//     });
+// }
+
+function clearBlocks() {
+    const gridBlocks=document.querySelectorAll('.grid-item');
+    gridBlocks.forEach((block) => {
+        block.style.backgroundColor="rgb(255, 235, 205, 0.8)";
+        block.style.border='1px solid rgba(0, 0, 0, 0.8)';
+    });
+}
 insertGridBlocks(GRIDSIZE);
 colorIn('red');
+resetPage();
 
