@@ -11,7 +11,7 @@
 
 
 
-const GRIDSIZE=4;
+const GRIDSIZE=16;
 
 function insertGridBlocks(GRIDSIZE) {
     //Take in size of the grid, which is number of columns and rows
@@ -25,11 +25,19 @@ function insertGridBlocks(GRIDSIZE) {
         let div=document.createElement('div');
         div.classList.add('grid-item');
         div.setAttribute('id', `grid-item${i}`)
-        div.textContent=i;
+        // div.textContent=i;
         gridContainer.appendChild(div);
 
         //append grid-item child to the grid-container parent
     }
+    alignGrid(GRIDSIZE);
+}
+
+function alignGrid(GRIDSIZE) {
+    //Take in the grid size and modify the css style of the grid-container to have
+    //same number of blocks on columns and row based on available size.
+    const gridContainer=document.getElementsByClassName('grid-container')
+    gridContainer[0].style.gridTemplateColumns =`repeat(${GRIDSIZE}, ${(98/GRIDSIZE)}vh)`;
 }
 
 insertGridBlocks(GRIDSIZE);
