@@ -11,7 +11,7 @@
 
 
 
-const GRIDSIZE=16;
+const GRIDSIZE=100;
 
 function insertGridBlocks(GRIDSIZE) {
     //Take in size of the grid, which is number of columns and rows
@@ -37,7 +37,18 @@ function alignGrid(GRIDSIZE) {
     //Take in the grid size and modify the css style of the grid-container to have
     //same number of blocks on columns and row based on available size.
     const gridContainer=document.getElementsByClassName('grid-container')
-    gridContainer[0].style.gridTemplateColumns =`repeat(${GRIDSIZE}, ${(98/GRIDSIZE)}vh)`;
+    gridContainer[0].style.gridTemplateColumns =`repeat(${GRIDSIZE}, ${(97/GRIDSIZE)}vh)`;
 }
 
+function colorIn(color) {
+    const gridBlocks=document.querySelectorAll('.grid-item');
+gridBlocks.forEach((block) => {
+    block.addEventListener("mouseenter", () => {
+        block.style.backgroundColor=color;
+        block.style.border='none';
+    });
+});
+}
 insertGridBlocks(GRIDSIZE);
+colorIn('red');
+

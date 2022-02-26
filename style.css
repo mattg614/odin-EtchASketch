@@ -9,7 +9,7 @@
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 22.5vh);
+    /* grid-template-columns: repeat(4, 22.5vh); */
 
     background-color: #2196F3;
     padding: 10px;
@@ -23,6 +23,7 @@
     font-size: 30px;
     text-align: center;
   }
+
 
   .grid-container > div::before {
       content: "";
