@@ -41,6 +41,8 @@ function alignGrid(GRIDSIZE) {
     const gridContainer=document.getElementsByClassName('grid-container')
     gridContainer[0].style.gridTemplateColumns =`repeat(${GRIDSIZE}, ${(88/GRIDSIZE)}vh)`;
 }
+
+//Section to get the color from the color selector form and pass into colorIn function
 let color=document.getElementById('colors');
 let btn=document.getElementById('colorbtn');
 btn.addEventListener('click', () => {
@@ -48,6 +50,7 @@ btn.addEventListener('click', () => {
 });
 
 function colorIn(color='black') {
+    //Takes in color if it is random need to run function to get random color otherwise continue
     if (color==='random') {
         color=getRandomColor();
     }
@@ -60,25 +63,16 @@ function colorIn(color='black') {
     });
 }
 function resetPage() {
+    //Button to reset the page by using clear blocks function
     const resetBtn=document.getElementById("#resetButton");
     resetBtn.addEventListener('click', ()=> {
        clearBlocks();
-    //    getNewGridSize();
     });
 }
 
-//Accidentally made an eraser may add in later
-// function Eraser() {
-//     const gridBlocks=document.querySelectorAll('.grid-item');
-//     gridBlocks.forEach((block) => {
-//         block.addEventListener("mouseenter", () => {
-//             block.style.backgroundColor="rgb(255, 235, 205, 0.8)";
-//             block.style.border='1px solid rgba(0, 0, 0, 0.8)';
-//         });
-//     });
-// }
 
 function clearBlocks() {
+    //resets the blocks to the original values
     const gridBlocks=document.querySelectorAll('.grid-item');
     gridBlocks.forEach((block) => {
         block.style.backgroundColor="rgb(255, 235, 205, 0.8)";
@@ -92,12 +86,15 @@ let GridRange=document.getElementById('gridSize');
 let changeSizeText=document.getElementsByClassName('changSizeText');
 
 GridRange.addEventListener("input", ()=> {
+    //grid range slider to change the amount of blocks
+    //remove children function needed to remove previous blocks if size is decresing 
     removeChildren();
     insertGridBlocks(parseInt(GridRange.value));
 
 })
 function removeChildren() {
     const gridContainer=document.querySelector('.grid-container')
+    //while function reemoves all the block-items
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
     }
