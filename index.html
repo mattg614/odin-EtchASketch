@@ -12,13 +12,30 @@
     <wrapper>
         <div class="header">
             <div class="title">ETCH-A-SKETCH: Move cursor to color in blocks!</div>
+            <div class="colorPicker">
+                <form id='colorForm' action="">
+                    <label for="colors">Choose a block color:</lable>
+                    <select id="colors" name="colors">
+                    <option value="black">Black</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="cyan">Cyan</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="orange">Orange</option>
+                    <option value="brown">Brown</option>
+                    <option value="random">Random</option>
+                    </select>
+                    <button id='colorbtn' type="button">Submit</button>
+                </form>
+            </div>
             <div class="changeSizeWrapper">
                 <div class="changeSizeText">Grid Size:</div>
                 <input type="range" id="gridSize" name="gridSize" min="2" max="100" value="16"/>
 
             </div>
             <button id="#resetButton">Reset Page</button>
-        </div>
+            </div>
         <div class="flex-container">
             <div class="grid-container">            
             </div>

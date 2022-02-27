@@ -31,7 +31,8 @@ function insertGridBlocks(GRIDSIZE) {
         //append grid-item child to the grid-container parent
     }
     alignGrid(GRIDSIZE);
-    colorIn('red');
+
+    colorIn();
 }
 
 function alignGrid(GRIDSIZE) {
@@ -40,8 +41,16 @@ function alignGrid(GRIDSIZE) {
     const gridContainer=document.getElementsByClassName('grid-container')
     gridContainer[0].style.gridTemplateColumns =`repeat(${GRIDSIZE}, ${(88/GRIDSIZE)}vh)`;
 }
+let color=document.getElementById('colors');
+let btn=document.getElementById('colorbtn');
+btn.addEventListener('click', () => {
+  colorIn(color.value);
+});
 
-function colorIn(color) {
+function colorIn(color='black') {
+    if (color==='random') {
+        color=getRandomColor();
+    }
     const gridBlocks=document.querySelectorAll('.grid-item');
     gridBlocks.forEach((block) => {
         block.addEventListener("mouseenter", () => {
@@ -57,10 +66,7 @@ function resetPage() {
     //    getNewGridSize();
     });
 }
-// function getNewGridSize() {
-//     let gridsize=prompt("Enter a new grid size");
-//     insertGridBlocks(parseInt(gridsize));
-// }
+
 //Accidentally made an eraser may add in later
 // function Eraser() {
 //     const gridBlocks=document.querySelectorAll('.grid-item');
@@ -95,6 +101,9 @@ function removeChildren() {
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
     }
+}
+function getRandomColor() {
+    return 'red';
 }
 insertGridBlocks(GRIDSIZE);
 
